@@ -1,0 +1,139 @@
+{
+    "_version": "1.42.0",
+    "sap.app": {
+        "id": "com.employee.f.empfiori",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.16.2",
+            "toolsId": "cfb180c4-debf-4ddf-83dd-633118b23e0e"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZNI_EMPLOYEE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "fullWidth": true,
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.102.8",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.employee.f.empfiori.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.employee.f.empfiori.view",
+                "controlAggregation": "pages",
+                "controlId": "idEmployee",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "main",
+                    "pattern": "",
+                    "target": [
+                        "Main",
+                        "Detail"
+                    ]
+                },
+                {
+                    "name": "detail",
+                    "pattern": "detail/{EmpId}",
+                    "target": [
+                        "Main",
+                        "Detail"
+                    ]
+                },
+                {
+                    "name": "create",
+                    "pattern": "create",
+                    "target": [
+                        "Main",
+                        "Create"
+                    ]
+                }
+            ],
+            "targets": {
+                "Main": {
+                    "controlAggregation": "beginColumnPages",
+                    "viewName": "Main"
+                },
+                "Detail": {
+                    "controlAggregation": "midColumnPages",
+                    "viewName": "Detail"
+                },
+                "Create": {
+                    "controlAggregation": "midColumnPages",
+                    "viewName": "Create"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.employee.f.empfiori.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

@@ -1,0 +1,168 @@
+<mvc:View
+	controllerName="com.employee.f.empfiori.controller.Detail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+	xmlns:f="sap.f"
+	xmlns:ui="sap.ui.table"
+>
+	<f:DynamicPage
+		id="idDynamicPageDetail"
+		toggleHeaderOnTitleClick="false"
+	>
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Employees Data"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<VBox fitContainer="true">
+				<ui:Table
+					rows="{employee>/employeeDetailArray/}"
+					id=""
+					selectionMode="None"
+					visibleRowCount="4"
+					visible="{view>/table}"
+					paste="onPaste"
+					ariaLabelledBy="title"
+				>
+					<ui:extension>
+						<OverflowToolbar style="Clear">
+							<Title
+								id="title"
+								text="Employees"
+							/>
+						</OverflowToolbar>
+					</ui:extension>
+					<ui:columns>
+						<ui:Column
+							width="7.5rem"
+							hAlign="End"
+						>
+							<Label text="Employee Id"/>
+							<ui:template>
+								<Text
+									text="{employee>EmpId}"
+									id="emp_id"
+									wrapping="false"
+								/>
+							</ui:template>
+						</ui:Column>
+						<ui:Column width="12rem">
+							<Label text="Employee Name"/>
+							<ui:template>
+								<Input
+									value="{employee>EmpName}"
+									editable="{editModel>/edit}"
+								/>
+							</ui:template>
+						</ui:Column>
+						<ui:Column width="8rem">
+							<Label text="Post"/>
+							<ui:template>
+								<Input
+									value="{employee>EmpPost}"
+									editable="{editModel>/edit}"
+								/>
+							</ui:template>
+						</ui:Column>
+						<ui:Column width="8rem">
+							<Label text="Department"/>
+							<ui:template>
+								<Input
+									value="{employee>EmpDept}"
+									editable="{editModel>/edit}"
+								/>
+							</ui:template>
+						</ui:Column>
+						<ui:Column width="8rem">
+							<Label text="Gender"/>
+							<ui:template>
+								<Input
+									value="{employee>EmpGender}"
+									editable="{editModel>/edit}"
+								/>
+							</ui:template>
+						</ui:Column>
+						<!-- <ui:Column width="8rem">
+							<Label text="Gender"/>
+							<ui:template>
+								<ComboBox
+									id="genderId"
+									editable="{{employee>EmpGender}}"
+									value="{employee>EmpGender}"
+								>
+									<c:Item text="Male"/>
+									<c:Item text="Female"/>
+									<c:Item text="Other"/>
+								</ComboBox>
+							</ui:template>
+						</ui:Column> -->
+						<ui:Column width="8rem">
+							<Label text="Mobile No"/>
+							<ui:template>
+								<Input
+									value="{employee>EmpMobNo}"
+									editable="{editModel>/edit}"
+								/>
+							</ui:template>
+						</ui:Column>
+						<ui:Column
+							width="3rem"
+							visible="{= ${editModel>/edit} === true ? false : true}"
+						>
+							<ui:template>
+								<Button
+									tooltip="Update"
+									icon="sap-icon://edit"
+									press=".onUpdate"
+								/>
+							</ui:template>
+						</ui:Column>
+						<ui:Column
+							width="3rem"
+							visible="{editModel>/edit}"
+						>
+							<ui:template>
+								<Button
+									tooltip="Cancel"
+									icon="sap-icon://cancel"
+									press=".onCancel"
+								/>
+							</ui:template>
+						</ui:Column>
+						<ui:Column
+							width="3rem"
+							visible="{editModel>/edit}"
+						>
+							<ui:template>
+								<Button
+									tooltip="Save"
+									icon="sap-icon://save"
+									press=".onSaveUpdate"
+								/>
+							</ui:template>
+						</ui:Column>
+						<ui:Column
+							width="3rem"
+							visible="{= ${editModel>/edit} === true ? false : true}"
+						>
+							<ui:template>
+								<Button
+									tooltip="Delete"
+									icon="sap-icon://delete"
+									press=".onDelete"
+								/>
+							</ui:template>
+						</ui:Column>
+					</ui:columns>
+				</ui:Table>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

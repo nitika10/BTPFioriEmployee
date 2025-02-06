@@ -1,0 +1,45 @@
+<mvc:View controllerName="com.employee.f.empfiori.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content />
+        <List
+			id="listId"
+			headerText="Employees"
+			items="{
+				path: '/EmployeeSet',
+				parameters: {
+					operationMode: 'Client'
+				}
+			}"
+			growingScrollToLoad="true"
+		>
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Employees"/>
+					<ToolbarSpacer/>
+					<SearchField
+						width="200px"
+						liveChange=".onSearch"
+					/>
+				</Toolbar>
+			</headerToolbar>
+			<StandardListItem
+				title="{EmpId}"
+				description="{EmpName}"
+				type="Navigation"
+				press="onPress"
+			/>
+		</List>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button
+					icon="sap-icon://add"
+					text="Create"
+					press="onCreate"
+				/>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

@@ -1,0 +1,99 @@
+<mvc:View controllerName="com.employee.f.empfiori.controller.Create"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+	xmlns:f="sap.f">
+
+    <f:DynamicPage
+		id="idDynamicPageCreate"
+		toggleHeaderOnTitleClick="false"
+	>
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Employees Create Data"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<VBox fitContainer="true">
+				<Panel id="createForm">
+					<form:SimpleForm
+						title="Create Employee Details"
+						editable="true"
+					>
+						<Label
+							text="Employee Id(required) "
+							labelFor="Empid"
+							design="Bold"
+						/>
+						<Input
+							id="emp_id"
+							required="true"
+							width="50%"
+							value="{createEmp>/EmpId}"
+						/>
+						<Label
+							text="Employee Name "
+							labelFor="Name"
+							design="Bold"
+						/>
+						<Input
+							id="name_id"
+							width="50%"
+							value="{createEmp>/EmpName}"
+						/>
+						<Label
+							text="Employee Post "
+							labelFor="Post"
+							design="Bold"
+						/>
+						<Input
+							id="post_id"
+							width="50%"
+							value="{createEmp>/EmpPost}"
+						/>
+						<Label
+							text="Employee Department "
+							labelFor="Dept"
+							design="Bold"
+						/>
+						<Input
+							id="dept_id"
+							width="50%"
+							value="{createEmp>/EmpDept}"
+						/>
+						<Label
+							text="Employee Gender "
+							labelFor="gender"
+							design="Bold"
+						/>
+						<Input
+							id="gender_id"
+							width="50%"
+							value="{createEmp>/EmpGender}"
+						/>
+						<Label
+							text="Mobile No "
+							labelFor="mno"
+							design="Bold"
+						/>
+						<Input
+							id="mobno_id"
+							width="50%"
+							value="{createEmp>/EmpMobNo}"
+						/>
+					</form:SimpleForm>
+					<content>
+						<Button
+							text="{i18n>Submit}"
+							width="100px"
+							id="button_save"
+							press="OnCreate"
+						/>
+					</content>
+				</Panel>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>
